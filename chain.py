@@ -27,6 +27,7 @@ class Chain():
         h.update(''.encode('utf8'))
         origin = Block("Origin",h)
         origin.mine(self.difficulty)
+        print("Origin block: \t\t ",origin.hash.hexdigest())
         self.blocks.append(origin)
         
     def mine(self):
@@ -35,3 +36,12 @@ class Chain():
             block = Block(data, self.blocks[-1].hash)
             block.mine(self.difficulty)
             self.add_to_chain(block)
+            print("\n\n=======================")
+            print("Hash: \t\t", block.hash.hexdigest())
+            print("Previous Hash: \t\t", block.previous_hash.hexdigest())
+            print("Nonce: \t\t", block.nonce)
+            print("Data: \t\t", block.data)
+            print("\n\n=======================")
+            
+            
+            
